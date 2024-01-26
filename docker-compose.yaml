@@ -1,0 +1,47 @@
+version: "3.5"
+services:
+  bd:
+    image: mysql:8.0.29
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: desafiolike
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_TCP_PORT: 3308
+    ports:
+      - 3308:3308
+    expose:
+      - 3308
+  bd_test:
+    image: mysql:8.0.29
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: ${DB_TEST_PASSWORD}
+      MYSQL_USER: ${DB_TEST_USER}
+      MYSQL_PASSWORD: ${DB_TEST_PASSWORD}
+      MYSQL_DATABASE: desafioliketest
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_TCP_PORT: 3309
+    ports:
+      - 3309:3309
+    expose:
+      - 3309
+
+  desafio-like:
+    image: desafio-like
+    build:
+      context: .
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING.DATASOURCE.URL: jdbc:mysql://bd:3308/desafiolike?useTimezone=true&serverTimezone=UTC
+      SPRING.DATASOURCE.USERNAME: ${DB_USER}
+      SPRING.DATASOURCE.PASSWORD: ${DB_PASSWORD}
+      SPRING.JPA.HIBERNATE.DDL-AUTO: none
+    ports:
+      - 3000:3000
+    depends_on:
+      - bd
