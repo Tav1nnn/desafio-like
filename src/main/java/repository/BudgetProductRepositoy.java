@@ -1,7 +1,7 @@
 package repository;
 
-import entitiy.BudgetEntity;
-import entitiy.BudgetProductEntity;
+import entity.BudgetEntity;
+import entity.BudgetProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
