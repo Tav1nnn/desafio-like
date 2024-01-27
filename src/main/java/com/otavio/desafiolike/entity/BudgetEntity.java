@@ -1,4 +1,4 @@
-package entity;
+package com.otavio.desafiolike.entity;
 
 import jakarta.persistence.*;
 

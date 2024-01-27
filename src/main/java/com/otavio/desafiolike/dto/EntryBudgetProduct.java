@@ -1,23 +1,56 @@
-package dto;
+package com.otavio.desafiolike.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 
-public record EntryBudgetProduct(
-
+public class EntryBudgetProduct {
         @NotNull(message = "Campo nome não pode ser nulo")
         @Length(max = 200, message = "Campo nome tem que ter no maximo 200 caracteres")
         @JsonProperty("nome")
-        String productName,
+        private String productName;
+
         @NotNull(message = "Campo valor não pode ser nulo")
         @Positive(message = "Valor tem que ser maior que zero")
         @JsonProperty("valor")
-        Double productValue,
+        private Double productValue;
+
         @NotNull(message = "Campo quantidade não pode ser nulo")
         @Positive(message = "Valor tem que ser maior que zero")
         @JsonProperty("quantidade")
-        Integer quantity
-) {
+        private Integer quantity;
+
+        public EntryBudgetProduct() {
+        }
+
+        public EntryBudgetProduct(String productName, Double productValue, Integer quantity) {
+                this.productName = productName;
+                this.productValue = productValue;
+                this.quantity = quantity;
+        }
+
+        public String getProductName() {
+                return productName;
+        }
+
+        public void setProductName(String productName) {
+                this.productName = productName;
+        }
+
+        public Double getProductValue() {
+                return productValue;
+        }
+
+        public void setProductValue(Double productValue) {
+                this.productValue = productValue;
+        }
+
+        public Integer getQuantity() {
+                return quantity;
+        }
+
+        public void setQuantity(Integer quantity) {
+                this.quantity = quantity;
+        }
 }

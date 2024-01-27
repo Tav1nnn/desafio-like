@@ -1,11 +1,11 @@
-package Service;
+package com.otavio.desafiolike.Service;
 
-import dto.EntryBudget;
-import dto.EntryBudgetProduct;
-import dto.ExitBudget;
-import dto.ExitBudgetProduct;
+import com.otavio.desafiolike.dto.EntryBudget;
+import com.otavio.desafiolike.dto.EntryBudgetProduct;
+import com.otavio.desafiolike.dto.ExitBudget;
+import com.otavio.desafiolike.dto.ExitBudgetProduct;
 import org.springframework.stereotype.Service;
-import repository.BudgetRepositoy;
+import com.otavio.desafiolike.repository.BudgetRepositoy;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,21 +23,21 @@ public class BudgetService {
         Set<ExitBudgetProduct> exitBudgetProductSet = new HashSet<>();
         double totalBudget = 0.0;
 
-        for(EntryBudgetProduct product : entryBudget.products()) {
-            double totalValue = product.quantity()* product.productValue();
+        for(EntryBudgetProduct product : entryBudget.getProducts()) {
+            double totalValue = product.getQuantity() * product.getProductValue();
             totalBudget += totalValue;
             ExitBudgetProduct exitProduct = new ExitBudgetProduct(
-                    product.productName(),
-                    product.productValue(),
-                    product.quantity(),
+                    product.getProductName(),
+                    product.getProductValue(),
+                    product.getQuantity(),
                     totalValue
             );
             exitBudgetProductSet.add(exitProduct);
         }
 
         return new ExitBudget(
-                entryBudget.clientName(),
-                entryBudget.date(),
+                entryBudget.getClientName(),
+                entryBudget.getDate(),
                 exitBudgetProductSet,
                 totalBudget
         );
