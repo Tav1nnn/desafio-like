@@ -98,7 +98,10 @@ Nesta rota, o usuário insere seu nome, a data atual e uma lista detalhada dos p
 quantidades e preços individuais. Após o envio dessas informações, o sistema processa os dados e retorna um orçamento 
 detalhado, mostrando o valor total estimado dos produtos solicitados.
 
+---
+
 `POST localhost:3000/api/v1/orcamento/confirmar`
+
 `Request`
 ```jsx
 {
