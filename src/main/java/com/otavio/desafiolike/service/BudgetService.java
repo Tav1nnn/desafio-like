@@ -1,4 +1,4 @@
-package com.otavio.desafiolike.Service;
+package com.otavio.desafiolike.service;
 
 import com.otavio.desafiolike.dto.*;
 import com.otavio.desafiolike.entity.BudgetEntity;
@@ -56,6 +56,6 @@ public class BudgetService {
                entity.getDate()
        );
 
-       budgetProductService.saveBudgetProductService(entryBudget.getProducts(), dto);
+       budgetProductService.saveBudgetProduct(entryBudget.getProducts(), dto);
     }
 }

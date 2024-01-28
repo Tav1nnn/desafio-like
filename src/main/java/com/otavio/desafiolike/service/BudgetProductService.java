@@ -1,4 +1,4 @@
-package com.otavio.desafiolike.Service;
+package com.otavio.desafiolike.service;
 
 import com.otavio.desafiolike.dto.BudgetDto;
 import com.otavio.desafiolike.dto.EntryBudgetProductDto;
@@ -17,7 +17,7 @@ public class BudgetProductService {
         this.repositoy = repositoy;
     }
 
-    protected void saveBudgetProductService (Set<EntryBudgetProductDto> set, BudgetDto budgetDto) {
+    protected void saveBudgetProduct(Set<EntryBudgetProductDto> set, BudgetDto budgetDto) {
         BudgetEntity budgetEntity = new BudgetEntity(
           budgetDto.getId(),
           budgetDto.getClientName(),
