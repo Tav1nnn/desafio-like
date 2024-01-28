@@ -29,7 +29,7 @@ public class BudgetController {
         this.service = service;
     }
 
-    @PostMapping(value = "/calcular")
+
     @Operation(summary = "Calcular orçamento", description = "Cliente seleciona os produtos e suas quantidades " +
             "para fazer o calculo do orçamento")
     @ApiResponses(value = {
@@ -38,8 +38,8 @@ public class BudgetController {
             @ApiResponse(responseCode = "422", description = "Erro no nos dados inseridos",
             content = @Content(schema = @Schema(implementation = ValidationError.class)))
     })
+    @PostMapping(value = "/calcular")
     public ResponseEntity<ExitBudgetDto> calculateBudget (@Valid @RequestBody EntryBudgetDto entryBudget) {
-        System.out.println("size" + entryBudget.getProducts().size());
         return ResponseEntity.ok().body(service.calculateBudget(entryBudget));
     }
     @PostMapping(value = "/confirmar")
