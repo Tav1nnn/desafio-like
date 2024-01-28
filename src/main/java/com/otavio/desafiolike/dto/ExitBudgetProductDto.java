@@ -24,7 +24,7 @@ public class ExitBudgetProductDto {
         @NotNull(message = "Campo valorTotal não pode ser nulo")
         @Positive(message = "Campo valorTotal tem que ser maior que zero")
         @JsonProperty("valorTotal")
-        private Double TotalValue;
+        private Double totalValue;
 
         public ExitBudgetProductDto() {
         }
@@ -33,7 +33,7 @@ public class ExitBudgetProductDto {
                 this.productName = productName;
                 this.productValue = productValue;
                 this.quantity = quantity;
-                TotalValue = totalValue;
+                this.totalValue = totalValue;
         }
 
         public String getProductName() {
@@ -61,10 +61,10 @@ public class ExitBudgetProductDto {
         }
 
         public Double getTotalValue() {
-                return TotalValue;
+                return totalValue;
         }
 
         public void setTotalValue(Double totalValue) {
-                TotalValue = totalValue;
+                this.totalValue = totalValue;
         }
 }
