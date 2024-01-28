@@ -33,4 +33,9 @@ public class BudgetProductRepositoryTest {
         assertEquals("Produto", entity.getProductName());
     }
 
+    @Test
+    public void testingWhetherTheObjectWasSavedInTheDatabase () {
+
+    }
+
 }

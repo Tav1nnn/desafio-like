@@ -41,6 +41,8 @@ services:
       SPRING.DATASOURCE.USERNAME: ${DB_USER}
       SPRING.DATASOURCE.PASSWORD: ${DB_PASSWORD}
       SPRING.JPA.HIBERNATE.DDL-AUTO: none
+      SPRING.JPA.HIBERNATE.NAMING.IMPLICIT-ESTRATEGY: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      SPRING.JPA.HIBERNATE.NAMING.PHYSICAL-STRATEGY: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     ports:
       - 3000:3000
     depends_on:
