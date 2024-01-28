@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import org.hibernate.validator.constraints.Length;
 
-public class ExitBudgetProduct {
+public class ExitBudgetProductDto {
         @NotNull(message = "Campo nome não pode ser nulo")
         @Length(max = 200, message = "Campo nome tem que ter no maximo 200 caracteres")
         @JsonProperty("nome")
@@ -26,10 +26,10 @@ public class ExitBudgetProduct {
         @JsonProperty("valorTotal")
         private Double TotalValue;
 
-        public ExitBudgetProduct() {
+        public ExitBudgetProductDto() {
         }
 
-        public ExitBudgetProduct(String productName, Double productValue, Integer quantity, Double totalValue) {
+        public ExitBudgetProductDto(String productName, Double productValue, Integer quantity, Double totalValue) {
                 this.productName = productName;
                 this.productValue = productValue;
                 this.quantity = quantity;

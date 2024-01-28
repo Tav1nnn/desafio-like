@@ -1,28 +1,26 @@
-package com.otavio.desafiolike.entity;
+package com.otavio.desafiolike.dto;
 
-import jakarta.persistence.*;
+import com.otavio.desafiolike.entity.BudgetEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.io.Serializable;
-
 import java.sql.Date;
 import java.util.Objects;
 
-@Entity(name = "orcamento")
-public class BudgetEntity implements Serializable {
+public class BudgetDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nomeCliente")
     private String clientName;
-    @Column(name = "data")
     private Date date;
 
-    public BudgetEntity() {
+    public BudgetDto() {
     }
 
-    public BudgetEntity(Long id, String clientName, Date date) {
+    public BudgetDto(Long id, String clientName, Date date) {
         this.id = id;
         this.clientName = clientName;
         this.date = date;
@@ -52,16 +50,4 @@ public class BudgetEntity implements Serializable {
         this.date = date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BudgetEntity that = (BudgetEntity) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

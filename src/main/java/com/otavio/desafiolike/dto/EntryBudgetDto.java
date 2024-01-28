@@ -6,11 +6,12 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EntryBudget {
+public class EntryBudgetDto {
         @NotNull(message = "Campo nome não pode ser nulo")
         @Length(max = 200, message = "Campo nome tem que ter no maximo 200 caracteres")
         @JsonProperty("nomeCliente")
@@ -24,13 +25,13 @@ public class EntryBudget {
         @NotNull(message = "Campo listaProdutos não pode ser nulo")
         @JsonProperty("ListaProdutos")
         @Valid
-        private Set<EntryBudgetProduct> products = new HashSet<>();
+        private Set<EntryBudgetProductDto> products = new HashSet<>();
 
-        public EntryBudget() {
+        public EntryBudgetDto() {
 
         }
 
-        public EntryBudget(String clientName, Date date, Set<EntryBudgetProduct> products) {
+        public EntryBudgetDto(String clientName, Date date, Set<EntryBudgetProductDto> products) {
                 this.clientName = clientName;
                 this.date = date;
                 this.products = products;
@@ -52,11 +53,11 @@ public class EntryBudget {
                 this.date = date;
         }
 
-        public Set<EntryBudgetProduct> getProducts() {
+        public Set<EntryBudgetProductDto> getProducts() {
                 return products;
         }
 
-        public void setProducts(Set<EntryBudgetProduct> products) {
+        public void setProducts(Set<EntryBudgetProductDto> products) {
                 this.products = products;
         }
 }

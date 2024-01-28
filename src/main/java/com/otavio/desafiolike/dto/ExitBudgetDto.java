@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ExitBudget {
+public class ExitBudgetDto {
         @NotNull(message = "Campo nome não pode ser nulo")
         @Length(max = 200, message = "Campo nome tem que ter no maximo 200 caracteres")
         @JsonProperty("nomeCliente")
@@ -23,17 +23,17 @@ public class ExitBudget {
 
         @NotNull(message = "Campo listaProdutos não pode ser nulo")
         @JsonProperty("ListaProdutos")
-        private Set<ExitBudgetProduct> products = new HashSet<>();
+        private Set<ExitBudgetProductDto> products = new HashSet<>();
 
         @NotNull(message = "Campo totalOrcamento não pode ser nulo")
         @Positive(message = "Campo totalOrcamento tem que ser maior que zero")
         @JsonProperty("totalOrcamento")
         private Double totalBudget;
 
-        public ExitBudget() {
+        public ExitBudgetDto() {
         }
 
-        public ExitBudget(String clientName, Date date, Set<ExitBudgetProduct> products, Double totalBudget) {
+        public ExitBudgetDto(String clientName, Date date, Set<ExitBudgetProductDto> products, Double totalBudget) {
                 this.clientName = clientName;
                 this.date = date;
                 this.products = products;
@@ -56,11 +56,11 @@ public class ExitBudget {
                 this.date = date;
         }
 
-        public Set<ExitBudgetProduct> getProducts() {
+        public Set<ExitBudgetProductDto> getProducts() {
                 return products;
         }
 
-        public void setProducts(Set<ExitBudgetProduct> products) {
+        public void setProducts(Set<ExitBudgetProductDto> products) {
                 this.products = products;
         }
 
