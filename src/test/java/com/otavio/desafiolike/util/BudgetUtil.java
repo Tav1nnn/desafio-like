@@ -6,6 +6,8 @@ import com.otavio.desafiolike.dto.ExitBudgetDto;
 import com.otavio.desafiolike.entity.BudgetEntity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BudgetUtil {
 
@@ -37,5 +39,12 @@ public class BudgetUtil {
         exitBudgetDto.getProducts().add(BudgetProductUtil.createExitBudgetProductDto());
         exitBudgetDto.setTotalBudget(20.0);
         return exitBudgetDto;
+    }
+
+    public static List<BudgetEntity> createExitBudgetEntityList () {
+        List<BudgetEntity> list = new ArrayList<>();
+
+        list.add(createBudgetEntity());
+        return list;
     }
 }

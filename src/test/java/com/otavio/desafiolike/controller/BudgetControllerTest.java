@@ -42,6 +42,8 @@ public class BudgetControllerTest {
     @BeforeEach
     void setup () {
          when(budgetService.calculateBudget(BudgetUtil.createEntryBudgetDto())).thenReturn(BudgetUtil.createExitBudgetDto());
+         doNothing().when(budgetService).deleteBudget(1L);
+         when(budgetService.findByIdBudget(1L)).thenReturn(BudgetUtil.createExitBudgetDto());
     }
 
     @Test
@@ -89,5 +91,28 @@ public class BudgetControllerTest {
         verify(budgetService, times(1)).saveBudget(any());
     }
 
+    @Test
+    public void testDeleteBudgetValidId () throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .delete("/api/v1/orcamento/deletar/1");
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
+        verify(budgetService, times(1)).deleteBudget(1L);
+    }
+
+    @Test
+    public void findById () throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/api/v1/orcamento/buscarPorId/1");
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
+        verify(budgetService, times(1)).findByIdBudget(1L);
+    }
 
 }
