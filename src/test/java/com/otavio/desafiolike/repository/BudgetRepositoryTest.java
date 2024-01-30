@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest
@@ -31,10 +32,29 @@ public class BudgetRepositoryTest {
     }
 
     @Test
-    public void testingWhetherTheObjectWasSavedInTheDatabase () {
+    public void testFindById () {
         save();
         Optional<BudgetEntity> optional = budgetRepositoy.findById(1L);
         assertNotNull(optional);
+    }
+
+    @Test
+    public void testFindAll () {
+        save();
+
+        List<BudgetEntity> list = budgetRepositoy.findAll();
+
+        assertEquals(1, list.size());
+    }
+
+    @Test
+    public void testFindByIdBudget () {
+        save();
+        budgetRepositoy.delete(BudgetUtil.createBudgetEntity());
+
+        boolean exist = budgetRepositoy.existsById(1L);
+
+        assertFalse(exist);
     }
 
     private void save() {

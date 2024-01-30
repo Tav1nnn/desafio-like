@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -36,10 +36,28 @@ public class BudgetProductRepositoryTest {
     }
 
     @Test
-    public void testingWhetherTheObjectWasSavedInTheDatabase () {
+    public void testFindById () {
         save();
         Optional<BudgetProductEntity> optional = budgetProductRepositoy.findById(1L);
         assertNotNull(optional);
+    }
+
+    @Test
+    public void testFindByBudget () {
+        save();
+        List<BudgetProductEntity> list = budgetProductRepositoy.findByBudget(BudgetUtil.createBudgetEntity());
+
+        assertEquals(1, list.size());
+    }
+
+    @Test
+    public void testDelete () {
+        save();
+        budgetProductRepositoy.delete(BudgetProductUtil.createBudgetProductEntity());
+
+        boolean exist = budgetProductRepositoy.existsById(1L);
+
+        assertFalse(exist);
     }
 
     private void save() {
