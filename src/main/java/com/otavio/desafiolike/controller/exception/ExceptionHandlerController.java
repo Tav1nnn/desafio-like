@@ -1,6 +1,8 @@
 package com.otavio.desafiolike.controller.exception;
 
+import com.otavio.desafiolike.controller.exception.model.StandardError;
 import com.otavio.desafiolike.controller.exception.model.ValidationError;
+import com.otavio.desafiolike.service.exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,5 +29,19 @@ public class ExceptionHandlerController {
         }
 
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(err);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<StandardError>
+    resourceNotFoundException (ResourceNotFoundException e, HttpServletRequest request) {
+        StandardError err = new StandardError();
+
+        err.setTimestamp(Instant.now());
+        err.setStatus(HttpStatus.NOT_FOUND.value());
+        err.setError("Recurso não encontrado");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
     }
 }

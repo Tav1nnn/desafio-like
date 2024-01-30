@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://bd:3308/desafiolike?useTimezone=true&serverTimezone=UTC
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/desafiolike?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: 123
   jpa:
     hibernate:
       ddl-auto: none
