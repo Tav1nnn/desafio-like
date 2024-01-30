@@ -7,7 +7,7 @@ que então é salvo em nosso banco de dados, ou pode optar por recalcular o orç
 
 ### Pré-requisitos
 
-Antes de começar, certifique-se de que você tem o Docker, Java 17 e Maven instalados em sua máquina.
+Antes de começar, certifique-se de que você tem o Docker instalado em sua máquina.
 
 ### Configuração
 
@@ -20,21 +20,24 @@ Antes de começar, certifique-se de que você tem o Docker, Java 17 e Maven inst
 - `DB_USER`
 - `DB_TEST_USER`
 
-Exemplo: `DB_USER="user"`
+Exemplo do arquivo .env:
+
+```jsx
+DB_PASSWORD="123"
+DB_TEST_PASSWORD="123"
+DB_USER="mysql"
+DB_TEST_USER="mysql"
+```
 
 Adicione os valores correspondentes a cada uma dessas variáveis.
 
 ### Execução
 
-1. Execute o seguinte comando para construir o projeto:
-
-   `mvn clean package -DskipTests`
-
-2. Em seguida, construa a imagem Docker com o seguinte comando:
+1. Em seguida, construa a imagem Docker com o seguinte comando:
 
    `docker-compose build`
 
-3. Finalmente, inicie a aplicação com o seguinte comando:
+2. Finalmente, inicie a aplicação com o seguinte comando:
 
    `docker-compose up`
 
