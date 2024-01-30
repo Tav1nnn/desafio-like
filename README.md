@@ -144,21 +144,25 @@ Para remover um orçamento específico, simplesmente forneça o ID correspondent
 `Reponse`
 ```jsx
 {
-    "nomeCliente": "Nome Cliente",
-    "data": "2024-12-31",
-    "ListaProdutos": [
-        {
-            "nome": "Produto 1",
-            "valor": 100.0,
-            "quantidade": 2
-        },
-        {
-            "nome": "Produto 2",
-            "valor": 200.0,
-            "quantidade": 1
-        }
-    ]
+	"nomeCliente": "Nome Cliente",
+	"data": "2024-12-30",
+	"ListaProdutos": [
+		{
+			"nome": "Produto 1",
+			"valor": 100.0,
+			"quantidade": 2,
+			"valorTotal": 200.0
+		},
+		{
+			"nome": "Produto 2",
+			"valor": 200.0,
+			"quantidade": 1,
+			"valorTotal": 200.0
+		}
+	],
+	"totalOrcamento": 400.0
 }
+
 ```
 ---
 ### Buscar todos os Orçamentos
@@ -168,20 +172,23 @@ Para remover um orçamento específico, simplesmente forneça o ID correspondent
 ```jsx
 [
 	{
-	    "nomeCliente": "Nome Cliente",
-	    "data": "2024-12-31",
-	    "ListaProdutos": [
-	        {
-	            "nome": "Produto 1",
-	            "valor": 100.0,
-	            "quantidade": 2
-	        },
-	        {
-	            "nome": "Produto 2",
-	            "valor": 200.0,
-	            "quantidade": 1
-	        }
-	    ]
+		"nomeCliente": "Nome Cliente",
+		"data": "2024-12-30",
+		"ListaProdutos": [
+			{
+				"nome": "Produto 1",
+				"valor": 100.0,
+				"quantidade": 2,
+				"valorTotal": 200.0
+			},
+			{
+				"nome": "Produto 2",
+				"valor": 200.0,
+				"quantidade": 1,
+				"valorTotal": 200.0
+			}
+		],
+		"totalOrcamento": 400.0
 	}
 ]
 ```
