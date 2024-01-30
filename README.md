@@ -20,14 +20,7 @@ Antes de começar, certifique-se de que você tem o Docker instalado em sua máq
 - `DB_USER`
 - `DB_TEST_USER`
 
-Exemplo do arquivo .env:
-
-```jsx
-DB_PASSWORD="123"
-DB_TEST_PASSWORD="123"
-DB_USER="mysql"
-DB_TEST_USER="mysql"
-```
+Exemplo do arquivo [.env](.env.example)
 
 Adicione os valores correspondentes a cada uma dessas variáveis.
 
@@ -54,6 +47,7 @@ Depois de rodar a aplicação, basta acessar o link: http://localhost:3000/swagg
 ## Rotas
 - a API responde na porta 3000.
 
+### Calcular Orçamento
 `POST localhost:3000/api/v1/orcamento/calcular`
 
 `Request`
@@ -102,7 +96,7 @@ quantidades e preços individuais. Após o envio dessas informações, o sistema
 detalhado, mostrando o valor total estimado dos produtos solicitados.
 
 ---
-
+### Confirmar Orçamento
 `POST localhost:3000/api/v1/orcamento/confirmar`
 
 `Request`
@@ -132,6 +126,65 @@ Se o cliente concordar com o orçamento gerado, ele deve reenviar as mesmas info
 `/confirmar`. Esta ação fará com que o sistema registre o orçamento no banco de dados. A resposta do sistema será 
 apenas um código de status HTTP 201, indicando que o recurso foi criado com sucesso.
 
+---
+### Deletar Orçamento
+`DELETE localhost:3000/api/v1/orcamento/deletar/1`
+
+`Reponse`
+```jsx
+200 ok
+```
+Para remover um orçamento específico, simplesmente forneça o ID correspondente. O sistema irá então processar a exclusão do orçamento selecionado.
+
+---
+
+### Buscar um Orçamento
+`GET localhost:3000/api/v1/orcamento/buscarPorId/1`
+
+`Reponse`
+```jsx
+{
+    "nomeCliente": "Nome Cliente",
+    "data": "2024-12-31",
+    "ListaProdutos": [
+        {
+            "nome": "Produto 1",
+            "valor": 100.0,
+            "quantidade": 2
+        },
+        {
+            "nome": "Produto 2",
+            "valor": 200.0,
+            "quantidade": 1
+        }
+    ]
+}
+```
+---
+### Buscar todos os Orçamentos
+`GET localhost:3000/api/v1/orcamento/buscar`
+
+`Reponse`
+```jsx
+[
+	{
+	    "nomeCliente": "Nome Cliente",
+	    "data": "2024-12-31",
+	    "ListaProdutos": [
+	        {
+	            "nome": "Produto 1",
+	            "valor": 100.0,
+	            "quantidade": 2
+	        },
+	        {
+	            "nome": "Produto 2",
+	            "valor": 200.0,
+	            "quantidade": 1
+	        }
+	    ]
+	}
+]
+```
 ## Técnologias utilizadas
 - Java
 - Spring Boot
